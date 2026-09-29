@@ -244,8 +244,7 @@ resources/                   内置版本清单 update-feed.json
 
 ## 致谢
 
-界面与交互参考了 [**TuckPane**](https://github.com/) 的设计思路，本项目是独立实现，
-未使用其任何代码或资源。
+作者：南京信息职业技术学院   一屿Yy
 
 ## 许可
 
