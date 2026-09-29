@@ -1,0 +1,247 @@
+/* 便签与待办共用样式 */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: transparent !important;
+  overflow: hidden;
+  font-family: var(--font);
+  font-size: 13px;
+  user-select: none;
+}
+
+.sticky {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--note-bg, #fde68a);
+  color: var(--note-fg, #422006);
+  box-shadow: 0 8px 28px rgba(15, 23, 42, 0.28), 0 0 0 1px rgba(15, 23, 42, 0.08);
+}
+
+.head {
+  height: 34px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 6px 0 10px;
+  -webkit-app-region: drag;
+  background: rgba(0, 0, 0, 0.045);
+}
+.title {
+  flex: 1;
+  min-width: 0;
+  font-weight: 600;
+  font-size: 12.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: text;
+  -webkit-app-region: no-drag;
+}
+.swatches {
+  display: flex;
+  gap: 3px;
+  -webkit-app-region: no-drag;
+}
+.sw {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 1.5px solid rgba(0, 0, 0, 0.18);
+  transition: transform 0.1s;
+}
+.sw:hover {
+  transform: scale(1.18);
+}
+.sw.active {
+  border-color: rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.7);
+}
+.hbtn {
+  width: 20px;
+  height: 20px;
+  border: none;
+  background: transparent;
+  color: inherit;
+  opacity: 0.55;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+  line-height: 1;
+  -webkit-app-region: no-drag;
+  flex: none;
+}
+.hbtn:hover {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  -webkit-app-region: no-drag;
+}
+#editor {
+  flex: 1;
+  border: none;
+  outline: none;
+  resize: none;
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+  font-size: 12.5px;
+  line-height: 1.65;
+  padding: 8px 11px;
+  user-select: text;
+  --rule: rgba(0, 0, 0, 0.09);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent calc(1.65em - 1px),
+    var(--rule) calc(1.65em - 1px),
+    var(--rule) 1.65em
+  );
+  background-position: 0 8px;
+}
+body.ruled #editor {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent calc(1.65em - 1px),
+    var(--rule) calc(1.65em - 1px),
+    var(--rule) 1.65em
+  );
+}
+body:not(.ruled) #editor {
+  background-image: none;
+}
+
+.foot {
+  flex: none;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 11px;
+  font-size: 10px;
+  opacity: 0.5;
+}
+
+/* ------------------------------ 待办 ------------------------------ */
+
+.todo-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 4px 8px;
+  -webkit-app-region: no-drag;
+}
+.todo-list::-webkit-scrollbar {
+  width: 6px;
+}
+.todo-list::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+.ti {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 6px;
+  border-radius: 6px;
+  transition: background 0.1s;
+}
+.ti:hover {
+  background: rgba(0, 0, 0, 0.055);
+}
+body.separators .ti + .ti {
+  border-top: 1px solid rgba(0, 0, 0, 0.09);
+}
+.ti input[type="checkbox"] {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  accent-color: currentColor;
+  cursor: pointer;
+}
+.ti .txt {
+  flex: 1;
+  min-width: 0;
+  font-size: 12.5px;
+  line-height: 1.5;
+  word-break: break-all;
+  cursor: text;
+  user-select: text;
+}
+.ti.done .txt {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+.ti .del {
+  width: 18px;
+  height: 18px;
+  border: none;
+  background: transparent;
+  color: inherit;
+  opacity: 0;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 11px;
+  flex: none;
+}
+.ti:hover .del {
+  opacity: 0.55;
+}
+.ti .del:hover {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.12);
+}
+.add-row {
+  flex: none;
+  display: flex;
+  gap: 6px;
+  padding: 6px 8px 8px;
+  -webkit-app-region: no-drag;
+}
+.add-row input {
+  flex: 1;
+  height: 26px;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  background: rgba(255, 255, 255, 0.55);
+  padding: 0 8px;
+  font-size: 12px;
+  color: inherit;
+  outline: none;
+}
+.add-row input:focus {
+  border-color: rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.8);
+}
+.add-row button {
+  width: 28px;
+  height: 26px;
+  border-radius: 6px;
+  border: none;
+  background: rgba(0, 0, 0, 0.12);
+  color: inherit;
+  cursor: pointer;
+  font-size: 14px;
+}
+.add-row button:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+.empty {
+  padding: 18px 10px;
+  text-align: center;
+  opacity: 0.45;
+  font-size: 11.5px;
+}

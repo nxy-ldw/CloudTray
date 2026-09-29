@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'" />
+    <title>收纳桌面</title>
+    <link rel="stylesheet" href="common/app.css" />
+    <link rel="stylesheet" href="settings.css" />
+  </head>
+  <body>
+    <header id="titlebar">
+      <div class="tb-left">
+        <img id="tb-logo" alt="" />
+        <span id="tb-title">收纳桌面</span>
+        <span class="badge" id="tb-version">1.0.0</span>
+      </div>
+      <div class="tb-right">
+        <button class="tb-btn" id="btn-min" title="最小化" aria-label="最小化">
+          <svg width="10" height="10" viewBox="0 0 10 10"><path d="M0 5h10" stroke="currentColor" stroke-width="1.2" /></svg>
+        </button>
+        <button class="tb-btn close" id="btn-close" title="关闭" aria-label="关闭">
+          <svg width="10" height="10" viewBox="0 0 10 10"><path d="M0 0l10 10M10 0L0 10" stroke="currentColor" stroke-width="1.2" /></svg>
+        </button>
+      </div>
+    </header>
+
+    <div id="shell">
+      <nav id="sidebar">
+        <div id="nav-list"></div>
+        <div class="side-foot">
+          <button class="btn ghost sm" id="btn-about" style="width: 100%">关于</button>
+        </div>
+      </nav>
+      <main id="content">
+        <div id="page"></div>
+      </main>
+    </div>
+
+    <div id="toasts"></div>
+
+    <script src="common/ui.js"></script>
+    <script src="settings.js"></script>
+  </body>
+</html>

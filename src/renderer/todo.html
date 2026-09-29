@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'" />
+    <title>待办</title>
+    <link rel="stylesheet" href="sticky.css" />
+  </head>
+  <body class="kind-todo separators">
+    <div class="sticky">
+      <div class="head">
+        <div class="title" id="title" title="单击可重命名">待办</div>
+        <div class="swatches" id="swatches"></div>
+        <button class="hbtn" id="btn-close" title="关闭">✕</button>
+      </div>
+      <div class="todo-list" id="list"></div>
+      <div class="add-row">
+        <input id="add" type="text" placeholder="输入待办并按 Enter" />
+        <button id="btn-add" title="添加">＋</button>
+      </div>
+      <div class="foot">
+        <span id="status"></span>
+        <span id="counter"></span>
+      </div>
+    </div>
+    <script src="common/ui.js"></script>
+    <script src="todo.js"></script>
+  </body>
+</html>

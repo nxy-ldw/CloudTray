@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'" />
+    <title>收纳桌面</title>
+    <link rel="stylesheet" href="common/app.css" />
+    <link rel="stylesheet" href="surface.css" />
+  </head>
+  <body>
+    <div id="root">
+      <div class="surface">
+        <!-- 收缩态入口 -->
+        <div id="entry">
+          <div class="entry-icon" id="entry-icon"></div>
+          <div class="entry-name" id="entry-name"></div>
+          <div class="entry-count" id="entry-count"></div>
+          <div class="edge-grip"></div>
+        </div>
+
+        <!-- Dock 栏 -->
+        <div id="dock-strip">
+          <div class="dock-drop-hint" id="dock-hint"></div>
+        </div>
+
+        <!-- 展开态面板 -->
+        <div id="panel">
+          <div class="panel-head" id="panel-head">
+            <div class="panel-title" id="panel-title"></div>
+            <button class="head-btn" id="btn-settings" title="设置"></button>
+            <button class="head-btn collapse-btn" id="btn-collapse" title="收缩"></button>
+          </div>
+          <div class="panel-body" id="panel-body"></div>
+        </div>
+      </div>
+    </div>
+    <div id="toast"></div>
+    <script src="common/ui.js"></script>
+    <script src="surface.js"></script>
+  </body>
+</html>

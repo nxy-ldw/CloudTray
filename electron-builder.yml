@@ -1,0 +1,54 @@
+appId: com.cloudtray.desktop
+productName: 云屉
+copyright: Copyright © 2026 云屉 CloudTray
+
+directories:
+  output: dist
+  buildResources: build
+
+asar: true
+npmRebuild: false
+buildDependenciesFromSource: false
+
+files:
+  - src/**/*
+  - assets/**/*
+  - package.json
+  - '!**/*.map'
+  - '!**/node_modules/**'
+
+extraResources:
+  - from: resources
+    to: .
+    filter:
+      - '**/*'
+
+win:
+  icon: build/icon.ico
+  executableName: CloudTray
+  # 产物文件名保持 ASCII：7za 在中文代码页下无法正确处理非 ASCII 命令行参数，
+  # 构建完成后再由 scripts/rename-artifacts.js 改成中文名。
+  artifactName: CloudTray-${version}-${arch}.${ext}
+  target:
+    - target: nsis
+      arch:
+        - x64
+    - target: zip
+      arch:
+        - x64
+
+nsis:
+  oneClick: false
+  perMachine: false
+  allowElevation: true
+  include: build/installer.nsh
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: 云屉
+  installerIcon: build/icon.ico
+  uninstallerIcon: build/icon.ico
+  installerHeaderIcon: build/icon.ico
+  deleteAppDataOnUninstall: false
+  runAfterFinish: true
+  artifactName: CloudTray-${version}-Setup.${ext}
